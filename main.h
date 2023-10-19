@@ -12,11 +12,10 @@ int _printf(const char *format, ...);
 int printf_int(va_list args);
 int printf_dec(va_list args);
 int printf_number(va_list args);
+int printf_binary(va_list args);
 int printf_char(va_list args);
-
-
-
-
+int printf_string(va_list args);
+int printf_HEX_ex(unsigned int num);
 
 /**
  * struct p_code - structure to associate format specifiers
