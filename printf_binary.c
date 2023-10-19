@@ -8,15 +8,16 @@
 
 int printf_binary(va_list args)
 {
-	int f, count, j, b;
+	int f, count, j, b, a;
 	unsigned int n, k;
 
+	a = 1;
 	f = 0;
 	count = 0;
 	n = va_arg(args, unsigned int);
 	for (j = 0; j < 32; j++)
 	{
-		k = ((1 << (32 - j)) & n);
+		k = ((a << (32 - j)) & n);
 		if (k >> (31 - j))
 		{
 			f = 1;
@@ -30,8 +31,8 @@ int printf_binary(va_list args)
 	}
 	if (count == 0)
 	{
-		count++;
 		_putchar('0');
+		count++;
 	}
 	return (count);
 }
