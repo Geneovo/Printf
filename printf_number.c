@@ -1,72 +1,41 @@
 #include "main.h"
-
-/**
- * printf_int - This prints integer
- * @args: argument to print
- * Return: number of chars printed
- */
-
-int printf_int(va_list args)
-{
-	return (printf_number(args));
-}
-
-/**
- * printf_dec - This prints decimal
- * @args: argument to print
- * Return: number of chars to print
- */
-
-int printf_dec(va_list args)
-{
-	return (printf_number(args));
-}
-
 /**
  * printf_number - This prints a number
  * @args: argument to print
  * Return: number of chars to print
  */
-
 int printf_number(va_list args)
 {
-	int num = va_arg(args, int);
-	int rn, l, digit, expo = 1;
-	int i = 1;
-
-	num /= 10;
-	rn = num;
-
-	if (rn < 0)
+int num = va_arg(args, int);
+int figure, last_digit = num % 10, digit, power = 1;
+int printed_chars = 1;
+	num = num / 10;
+	figure = num;
+	if (last_digit < 0)
 	{
 		_putchar('-');
-		rn = -rn;
-		l = -rn % 10;
-		i++;
+		figure = -figure;
+		num = -num;
+		last_digit = -last_digit;
+		printed_chars++;
 	}
-	else
+	if (figure > 0)
 	{
-		l = rn % 10;
-	}
-
-	if (rn > 0)
-	{
-		while (rn / 10 != 0)
+		while (figure / 10 != 0)
 		{
-			expo = expo * 10;
-			rn /= 10;
+			power = power * 10;
+			figure = figure / 10;
 		}
-		rn = num;
-
-		while (expo > 0)
+		figure = num;
+		while (power > 0)
 		{
-			digit = rn / expo;
+			digit = figure / power;
 			_putchar(digit + '0');
-			rn = rn - (digit * expo);
-			expo /= 10;
-			i++;
+			figure = figure - (digit * power);
+			power = power / 10;
+			printed_chars++;
 		}
-		_putchar(l + '0');
 	}
-	return (i);
+	_putchar(last_digit + '0');
+	return (printed_chars);
 }
