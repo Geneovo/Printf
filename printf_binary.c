@@ -24,7 +24,7 @@ int printf_binary(va_list args)
 		if (f)
 		{
 			b = k >> (31 - j);
-			_putchar('0' + b);
+			_putchar(48 + b);
 			count++;
 		}
 	}
