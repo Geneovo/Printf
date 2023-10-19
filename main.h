@@ -15,6 +15,7 @@ int printf_number(va_list args);
 int printf_binary(va_list args);
 int printf_char(va_list args);
 int printf_string(va_list args);
+int printf_strlen(va_list args);
 int printf_HEX_ex(unsigned int num);
 
 /**

@@ -1,46 +1,27 @@
 #include "main.h"
 
 /**
- * printf_string - This prints a string with special handling
- * for non-printable chars
+ * printf_string - prints a string character
  *
- * @args: va_list containing the string to print
+ * @args: argument
  *
- * Return: number of char to print
+ * Return: 0
  */
 
 int printf_string(va_list args)
 {
-	char *s;
-	int i, len = 0;
-	int val;
+	char *ab;
+	int c = 0;
 
-	s = va_arg(args, char *);
+	ab = va_arg(args, char *);
 
-	if (s == NULL)
-		s = "(null)";
-
-	for (i = 0; s[i] != '\0'; i++)
+	if (ab == NULL)
+		ab = "(null)";
+	while (ab[c])
 	{
-		if (s[i] < 32 || s[i] >= 127)
-		{
-			_putchar('\\');
-			_putchar('x');
-			len += 2;
-			val = s[i];
-
-			if (val < 16)
-			{
-				_putchar('0');
-				len++;
-			}
-			len += printf_HEX_ex(val);
-		}
-		else
-		{
-			_putchar(s[i]);
-			len++;
-		}
+		_putchar(ab[c]);
+		c++;
 	}
-	return (len);
+
+	return (c);
 }
