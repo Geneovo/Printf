@@ -21,7 +21,7 @@ int printf_HEX_ex(unsigned int num)
 	}
 	count++;
 
-	array = malloc(0sizeof(int) * count);
+	array = malloc(sizeof(int) * count);
 
 	if (array == NULL)
 		return (-1);

@@ -15,12 +15,12 @@ int printf_string(va_list args)
 	int i, len = 0;
 	int val;
 
-	s = va_arg(args, char *s);
+	s = va_arg(args, char *);
 
 	if (s == NULL)
 		s = "(null)";
 
-	for (i = o; s[i] != '\0'; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
 		if (s[i] < 32 || s[i] >= 127)
 		{

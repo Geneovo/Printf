@@ -16,7 +16,7 @@ int printf_binary(va_list args)
 	n = va_arg(args, unsigned int);
 	for (j = 0; j < 32; j++)
 	{
-		k = ((lu << (32 - j)) & n);
+		k = (1 << (32 - j)) & n;
 		if (k >> (31 - j))
 		{
 			f = 1;
