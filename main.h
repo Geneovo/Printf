@@ -15,6 +15,10 @@ int printf_char(va_list args);
 int printf_string(va_list args);
 int printf_strlen(va_list args);
 int printf_HEX_ex(unsigned int num);
+int printf_unsigned_int(va_list args);
+int printf_octal(va_list args);
+int printf_hex(va_list args);
+int printf_HEX(va_list args);
 
 /**
  * struct p_code - structure to associate format specifiers
