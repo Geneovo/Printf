@@ -3,7 +3,7 @@
 /**
  * printf_binary - prints the binary representation of an unsigned int
  *
- * @arg:
+ * @args: va_list containing the unsigned int to print
  * Return: number of characters to print
  */
 
@@ -30,8 +30,6 @@ int printf_binary(va_list args)
 
 		for (v = 1; v <= f; v++)
 		{
-			num = s / tl;
-			_putchar(num + '0');
 			count++;
 			s -= num * tl;
 			tl /= 2;
