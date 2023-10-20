@@ -1,37 +1,46 @@
 #include "main.h"
 
 /**
- * printf_binary - prints the binary representation of an unsigned integer
- * @args: va_list containing the unsigned integer to print
- * Return: number of characters printed
+ * printf_binary - prints the binary representation of an unsigned int
+ *
+ * @arg:
+ * Return: number of characters to print
  */
 
 int printf_binary(va_list args)
 {
-	int f, count, j, b;
-	unsigned int n, k;
+	unsigned int f, tl, v, num, s, cal;
+	int count = 0;
 
-	f = 0;
-	count = 0;
-	n = va_arg(args, unsigned int);
-	for (j = 0; j < 32; j++)
+	s = va_arg(args, unsigned int);
+	if (s != 0)
 	{
-		k = (1 << (32 - j)) & n;
-		if (k >> (31 - j))
+		cal = s;
+		f = 0;
+
+		while (cal != 0)
 		{
-			f = 1;
+			cal /= 2;
+			f++;
 		}
-		if (f)
+		tl = 1;
+
+		for (v = 1; v <= f - 1; v++)
+			tl *= 2;
+
+		for (v = 1; v <= f; v++)
 		{
-			b = k >> (31 - j);
-			_putchar('0' + b);
+			num = s / tl;
+			_putchar(num + '0');
 			count++;
+			s -= num * tl;
+			tl /= 2;
 		}
 	}
-	if (count == 0)
+	else
 	{
-		count++;
 		_putchar('0');
+		return (1);
 	}
 	return (count);
 }
