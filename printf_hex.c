@@ -3,16 +3,16 @@
 /**
  * printf_hex - This converts to unsigned decimal in lower case
  *
- * @args: argument to be converted
+ * @value: variable
  *
  * Return: count
  */
 
-int printf_hex(va_list args)
+int printf_hex(va_list value)
 {
 	int i, count = 0;
 	int *array;
-	unsigned int num = va_arg(args, unsigned int);
+	unsigned int num = va_arg(value, unsigned int);
 	unsigned int ten = num;
 
 	while (num / 16 != 0)

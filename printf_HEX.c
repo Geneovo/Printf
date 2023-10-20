@@ -3,16 +3,16 @@
 /**
  * printf_HEX - This converts to hexadecimal uppercase
  *
- * @args: argument to print
+ * @value: variable
  *
  * Return: count
  */
 
-int printf_HEX(va_list args)
+int printf_HEX(va_list value)
 {
 	int i, count = 0;
 	int *array;
-	unsigned int num = va_arg(args, unsigned int);
+	unsigned int num = va_arg(value, unsigned int);
 	unsigned int ten = num;
 
 	while (num / 16 != 0)

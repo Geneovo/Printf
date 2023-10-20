@@ -3,16 +3,16 @@
 /**
  * printf_octal - This converts to octal
  *
- * @args: argument
+ * @value: variable
  *
  * Return: count
  */
 
-int printf_octal(va_list args)
+int printf_octal(va_list value)
 {
 	int i, count = 0;
 	int *array;
-	unsigned int num = va_arg(args, unsigned int);
+	unsigned int num = va_arg(value, unsigned int);
 	unsigned int ten = num;
 
 	while (num != 0)
