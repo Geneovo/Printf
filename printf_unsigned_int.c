@@ -11,7 +11,7 @@
 int printf_unsigned_int(va_list args)
 {
 	unsigned int num = va_arg(args, unsigned int);
-	int rn, leg, digit, expo = 1;
+	int rn, l, digit, expo = 1;
 	int i = 0;
 
 	rn = num;
@@ -27,26 +27,27 @@ int printf_unsigned_int(va_list args)
 		_putchar('-');
 		rn = -rn;
 		num = -num;
-		leg = -rn % 10;
+		l = rn % 10;;
 		i++;
 	}
-	else
-	{
-		leg = rn % 10;
-	}
 
-	while (rn != 0)
+	if (rn > 0)
+	{
+		while (rn / 10 != 0)
 	{
 		rn = rn / 10;
 		expo = expo * 10;
 	}
-	while (expo > 0)
-	{
-		digit = num / expo;
-		_putchar(digit + '0');
-		num = num - (digit * expo);
-		expo /= 10;
-		i++;
+		rn = num;
+		while (expo > 0)
+		{
+			digit = rn / expo;
+			_putchar(digit + '0');
+			num = num - (digit * expo);
+			expo /= 10;
+			i++;
+		}
 	}
+	_putchar(l + '0');
 	return (i);
 }
