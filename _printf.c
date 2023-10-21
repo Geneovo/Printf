@@ -15,14 +15,15 @@ int (*characters(const char *format))(va_list)
 		{ "i", printf_number },
 		{ "d", printf_number },
 		{ "b", printf_binary },
+		{ "p", printf_pointer },
 		{ "u", printf_unsigned_int },
 		{ "o", printf_octal },
 		{ "x", printf_hex },
 		{ "X", printf_HEX },
+		{ "r", printf_reverse },
 		{ "S", printf_strlen },
 		{ NULL, NULL }
 	};
-
 	while (find_t[x].identifier)
 	{
 		if (find_t[x].identifier[0] == (*format))
@@ -31,7 +32,6 @@ int (*characters(const char *format))(va_list)
 	}
 	return (NULL);
 }
-
 /**
  * _printf - produces output according to the format
  * @format: format string
@@ -55,24 +55,22 @@ int _printf(const char *format, ...)
 			v++;
 		}
 		if (format[v] == '\0')
-		{
 			return (front);
+		p = characters(&format[v + 1]);
+		if (p != NULL)
+		{
+			front += p(args);
+			v += 2;
+			continue;
 		}
-	p = characters(&format[v + 1]);
-	if (p != NULL)
-	{
-		front += p(args);
-		v += 2;
-		continue;
-	}
-	if (!format[v + 1])
-		return (-1);
-	_putchar(format[v]);
-	front++;
-	if (format[v + 1] == '%')
-		v += 2;
-	else
-		v++;
+		if (!format[v + 1])
+			return (-1);
+		_putchar(format[v]);
+		front++;
+		if (format[v + 1] == '%')
+			v += 2;
+		else
+			v++;
 	}
 	va_end(args);
 	return (front);

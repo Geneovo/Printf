@@ -19,7 +19,10 @@ int printf_unsigned_int(va_list args);
 int printf_octal(va_list value);
 int printf_hex(va_list value);
 int printf_HEX(va_list value);
-
+int printf_reverse(va_list value);
+int printf_percent(void);
+int printf_hex_ext(unsigned long int lens);
+int printf_pointer(va_list value)
 /**
  * struct p_code - structure to associate format specifiers
  * @identifier: format specifier
