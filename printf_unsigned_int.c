@@ -27,10 +27,13 @@ int printf_unsigned_int(va_list args)
 		_putchar('-');
 		rn = -rn;
 		num = -num;
-		l = rn % 10;;
+		l = rn % 10;
 		i++;
 	}
-
+	else
+	{
+		l = -rn % 10;
+	}
 	if (rn > 0)
 	{
 		while (rn / 10 != 0)
